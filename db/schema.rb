@@ -11,15 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122042959) do
+ActiveRecord::Schema.define(version: 20150122052138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "characters", force: true do |t|
+    t.string "name"
+  end
 
   create_table "mods", force: true do |t|
     t.string  "role"
     t.string  "trait"
     t.integer "modifier"
   end
+
+  create_table "pf_classes", force: true do |t|
+    t.integer "character_id"
+  end
+
+  add_index "pf_classes", ["character_id"], name: "index_pf_classes_on_character_id", using: :btree
 
 end

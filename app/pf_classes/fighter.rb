@@ -1,5 +1,4 @@
-class Fighter
-  include ModsDsl
+class Fighter < PfClass
 
   role :class
   hit_die 10
